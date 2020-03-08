@@ -10,7 +10,6 @@ app.get('/',(req,res)=>{
 let connectedUser = [];
 
 io.on('connection', socket=>{
-    console.log('connected');
     updateUserName();
     let userName= '';
 
@@ -21,7 +20,6 @@ io.on('connection', socket=>{
         callback(true);
         userName = name;
         connectedUser.push(userName);
-        console.log(connectedUser);
         
         updateUserName();
     });
@@ -34,9 +32,8 @@ io.on('connection', socket=>{
     });
 
     socket.on('disconnect', ()=>{
-        console.log('disconnected');
+       
         connectedUser.splice(connectedUser.indexOf(userName),1);
-        console.log(connectedUser);
         updateUserName();
     });
     
