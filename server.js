@@ -10,6 +10,8 @@ app.get('/',(req,res)=>{
 let connectedUser = [];
 
 io.on('connection', socket=>{
+    
+
     updateUserName();
     let userName= '';
 
@@ -27,7 +29,8 @@ io.on('connection', socket=>{
     socket.on('chat message', msg=>{
         io.emit('output',{
             name:userName,
-            msg:msg
+            msg:msg,
+            order: connectedUser.indexOf(userName)
         });
     });
 

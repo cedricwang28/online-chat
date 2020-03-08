@@ -127,6 +127,17 @@
 
       socket.on('output',data=>{
         let message = document.createElement('h6');
+
+        if(data.order == 0){
+          message.style.color = 'beige';
+        }
+        if(data.order == 1){
+          message.style.color = 'white';
+        }
+        if(data.order == 2){
+          message.style.color = 'lightgrey';
+        }
+        
         message.textContent = data.name+": "+data.msg;
         messages.appendChild(message);
         messages.insertBefore(message,messages.lastChild);
